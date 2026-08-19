@@ -55,11 +55,12 @@ Voz ─────┘                                                     │
                                                                  ▼
                                                           SpeechService
                                                         (respuesta hablada)
-🔧 Tecnologías
+Tecnologías
 .NET 10 (C#)
 Vosk — reconocimiento de voz offline
 NAudio — captura de audio del micrófono
 System.Speech.Synthesis — síntesis de voz (texto a voz), usando las voces instaladas en Windows
+
 -Cómo correrlo
 Requisitos
 Windows (el proyecto usa APIs de voz específicas de Windows)
@@ -67,18 +68,24 @@ Windows (el proyecto usa APIs de voz específicas de Windows)
 Un micrófono configurado como dispositivo de entrada predeterminado
 Configuración
 Clona el repositorio y abre la solución en Visual Studio.
+
 Descarga el modelo de voz en español vosk-model-small-es-0.42 desde alphacephei.com/vosk/models.
 Descomprímelo dentro de una carpeta Model/ en la raíz del proyecto, de forma que quede:
    Model/vosk-model-small-es-0.42/am/
    Model/vosk-model-small-es-0.42/conf/
    Model/vosk-model-small-es-0.42/graph/
+   
 Restaura los paquetes NuGet (Vosk, NAudio, System.Speech) — Visual Studio lo hace automáticamente al compilar.
 Ejecuta el proyecto. Deberías ver:
    [VOZ] Reconocedores instalados en este equipo:
    ...
+   
    ASHLEE ONLINE.
+
+   
 Escribe o di cualquiera de los 8 comandos.
 -Roadmap
+
  Migrar la interfaz de consola a una interfaz gráfica (WPF) tipo HUD
  Añadir más protocolos (mantenimiento, emergencia, vuelo, etc.)
  Integrar hardware real (Arduino / ESP32) para sensores y actuadores
