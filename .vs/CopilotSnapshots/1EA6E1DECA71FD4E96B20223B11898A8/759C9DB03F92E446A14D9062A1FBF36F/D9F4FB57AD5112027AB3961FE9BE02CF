@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace A.S.H.L.E.E._alfa
+{
+    internal class AshleeSystem
+    {
+        public AshleeSystem()
+        {
+            Name = "Ashlee";
+            
+        }
+    }
+}
