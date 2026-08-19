@@ -14,7 +14,7 @@ namespace A.S.H.L.E.E._alfa.Voice
 
         public VoiceController(string modelPath, IEnumerable<string> commandWords)
         {
-            // Silencia los logs internos de Vosk (si no, ensucia la consola).
+         
             Vosk.Vosk.SetLogLevel(-1);
 
             if (!Directory.Exists(modelPath))
@@ -27,8 +27,7 @@ namespace A.S.H.L.E.E._alfa.Voice
 
             model = new Model(modelPath);
 
-            // Lista cerrada de palabras: mejora mucho la precisión frente a
-            // dictado libre, porque Vosk solo tiene que elegir entre estas.
+         
             var words = commandWords.ToList();
             words.Add("[unk]");
 
@@ -39,7 +38,7 @@ namespace A.S.H.L.E.E._alfa.Voice
 
             waveIn = new WaveInEvent
             {
-                WaveFormat = new WaveFormat(16000, 1) // 16kHz, mono: lo que Vosk espera
+                WaveFormat = new WaveFormat(16000, 1) 
             };
             waveIn.DataAvailable += OnDataAvailable;
         }
@@ -55,15 +54,12 @@ namespace A.S.H.L.E.E._alfa.Voice
             waveIn.StopRecording();
         }
 
-        // Margen extra después de hablar, para no capturar eco/reverberación
-        // de las bocinas justo cuando termina de decir la frase.
+    
         private static readonly TimeSpan EchoGuard = TimeSpan.FromMilliseconds(400);
 
         private void OnDataAvailable(object? sender, WaveInEventArgs e)
         {
-            // Si ASHLEE está hablando (o acaba de terminar), ignoramos el
-            // micrófono por completo: si no, se escucha a sí misma por las
-            // bocinas y entra en bucle re-ejecutando comandos.
+    
             bool recentlySpoke =
                 DateTime.UtcNow - SpeechService.LastSpokeAtUtc < EchoGuard;
 
